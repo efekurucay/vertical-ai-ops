@@ -1,0 +1,101 @@
+id,sektor,slug,baslik,dosya_yolu,durum
+1,lojistik,gumruk-tarife-siniflandirma,Gümrük Tarife Sınıflandırma Doğrulama,lojistik/gumruk-tarife-siniflandirma.md,done
+2,lojistik,tehlikeli-madde-tasima-adr,Tehlikeli Madde Taşıma Uyum Motoru (ADR),lojistik/tehlikeli-madde-tasima-adr.md,done
+3,lojistik,soguk-zincir-protokol,Soğuk Zincir Protokol Kontrol Motoru,lojistik/soguk-zincir-protokol.md,done
+4,havayolu,ucus-plani-hava-sahasi,Uçuş Planı Hava Sahası Uyum Motoru,havayolu/ucus-plani-hava-sahasi.md,done
+5,denizcilik,imo-emisyon-uyumu,IMO Emisyon Uyum Motoru (CII/EEXI),denizcilik/imo-emisyon-uyumu.md,done
+6,finans,kyc-aml-kural-motoru,KYC / AML Kural Motoru,finans/kyc-aml-kural-motoru.md,done
+7,finans,portfoy-risk-limiti-kontrolu,Portföy Risk Limiti Kontrolü,finans/portfoy-risk-limiti-kontrolu.md,done
+8,finans,kredi-skoru-dogrulama-katmani,Kredi Skoru Doğrulama Katmanı,finans/kredi-skoru-dogrulama-katmani.md,done
+9,sigorta,police-uygunluk-kontrolu,Poliçe Uygunluk Kontrolü,sigorta/police-uygunluk-kontrolu.md,done
+10,sigorta,hasar-talebi-dogrulama-motoru,Hasar Talebi Doğrulama Motoru,sigorta/hasar-talebi-dogrulama-motoru.md,done
+11,saglik,radyoloji-rapor-protokol-kontrolu,Radyoloji Rapor Protokol Kontrolü,saglik/radyoloji-rapor-protokol-kontrolu.md,todo
+12,saglik,ameliyat-oncesi-kontrol-listesi,Ameliyat Öncesi Kontrol Listesi,saglik/ameliyat-oncesi-kontrol-listesi.md,todo
+13,saglik,hasta-taburculuk-uygunlugu,Hasta Taburculuk Uygunluğu,saglik/hasta-taburculuk-uygunlugu.md,todo
+14,saglik,klinik-karar-destek-motoru,Klinik Karar Destek Motoru,saglik/klinik-karar-destek-motoru.md,todo
+15,ilac,klinik-deney-protokol-uyumu,Klinik Deney Protokol Uyumu,ilac/klinik-deney-protokol-uyumu.md,todo
+16,ilac,ilac-etiket-mevzuat-kontrolu,İlaç Etiket Mevzuat Kontrolü,ilac/ilac-etiket-mevzuat-kontrolu.md,todo
+17,ilac,recete-endikasyon-eslestirme,Reçete-Endikasyon Eşleştirme,ilac/recete-endikasyon-eslestirme.md,todo
+18,ilac,farmakovijilans-advers-etki-raporlama,Farmakovijilans Advers Etki Raporlama,ilac/farmakovijilans-advers-etki-raporlama.md,todo
+19,medikal-cihaz,ce-uygunluk-sertifika-kontrolu,CE Uygunluk Sertifika Kontrolü,medikal-cihaz/ce-uygunluk-sertifika-kontrolu.md,todo
+20,kozmetik,inci-listesi-uyum-motoru,INCI Listesi Uyum Motoru,kozmetik/inci-listesi-uyum-motoru.md,todo
+21,saglik,saglik-sigortasi-onay-motoru,Sağlık Sigortası Onay Motoru,saglik/saglik-sigortasi-onay-motoru.md,todo
+22,saglik,hasta-rizasi-belge-dogrulama,Hasta Rızası Belge Doğrulama,saglik/hasta-rizasi-belge-dogrulama.md,todo
+23,cevre,ced-raporu-mevzuat-uyumu,ÇED Raporu Mevzuat Uyumu,cevre/ced-raporu-mevzuat-uyumu.md,todo
+24,cevre,atik-siniflandirma-depolama-kontrolu,Atık Sınıflandırma ve Depolama Kontrolü,cevre/atik-siniflandirma-depolama-kontrolu.md,todo
+25,cevre,karbon-ayak-izi-hesap-dogrulama,Karbon Ayak İzi Hesap Doğrulama,cevre/karbon-ayak-izi-hesap-dogrulama.md,todo
+26,enerji,elektrik-piyasasi-dengeleme-kural-motoru,Elektrik Piyasası Dengeleme Kural Motoru,enerji/elektrik-piyasasi-dengeleme-kural-motoru.md,todo
+27,enerji,yek-lisans-basvuru-uyumu,YEK Lisans Başvuru Uyumu,enerji/yek-lisans-basvuru-uyumu.md,todo
+28,enerji,enerji-verimliligi-sertifika-dogrulama,Enerji Verimliliği Sertifika Doğrulama,enerji/enerji-verimliligi-sertifika-dogrulama.md,todo
+29,tarim,pestisit-kalinti-limit-kontrolu,Pestisit Kalıntı Limit Kontrolü,tarim/pestisit-kalinti-limit-kontrolu.md,todo
+30,tarim,organik-sertifika-uyum-motoru,Organik Sertifika Uyum Motoru,tarim/organik-sertifika-uyum-motoru.md,todo
+31,tarim,sulama-protokolu-optimizasyon-kontrolu,Sulama Protokolü Optimizasyon Kontrolü,tarim/sulama-protokolu-optimizasyon-kontrolu.md,todo
+32,tarim,tarim-kredisi-hibe-uygunluk-motoru,Tarım Kredisi Hibe Uygunluk Motoru,tarim/tarim-kredisi-hibe-uygunluk-motoru.md,todo
+33,insaat,yapi-ruhsati-uygunluk-kontrolu,Yapı Ruhsatı Uygunluk Kontrolü,insaat/yapi-ruhsati-uygunluk-kontrolu.md,todo
+34,insaat,is-guvenligi-jsa-dogrulama,İş Güvenliği JSA Doğrulama,insaat/is-guvenligi-jsa-dogrulama.md,todo
+35,insaat,malzeme-teknik-sartname-uyumu,Malzeme Teknik Şartname Uyumu,insaat/malzeme-teknik-sartname-uyumu.md,todo
+36,insaat,ihale-sartname-uygunluk-motoru,İhale Şartname Uygunluk Motoru,insaat/ihale-sartname-uygunluk-motoru.md,todo
+37,madencilik,mapeg-lisans-kosullari-uyumu,MAPEG Lisans Koşulları Uyumu,madencilik/mapeg-lisans-kosullari-uyumu.md,todo
+38,madencilik,patlayici-kullanim-protokol-kontrolu,Patlayıcı Kullanım Protokol Kontrolü,madencilik/patlayici-kullanim-protokol-kontrolu.md,todo
+39,insaat,deprem-yonetmeligi-uyum-motoru,Deprem Yönetmeliği Uyum Motoru,insaat/deprem-yonetmeligi-uyum-motoru.md,todo
+40,insaat,cevre-izin-lisans-kontrolu,Çevre İzin Lisans Kontrolü,insaat/cevre-izin-lisans-kontrolu.md,todo
+41,it,gdpr-kvkk-veri-isleme-uyumu,GDPR/KVKK Veri İşleme Uyumu,it/gdpr-kvkk-veri-isleme-uyumu.md,todo
+42,it,soc2-kontrol-listesi-dogrulama,SOC 2 Kontrol Listesi Doğrulama,it/soc2-kontrol-listesi-dogrulama.md,todo
+43,it,api-guvenlik-standart-kontrolu-owasp,API Güvenlik Standart Kontrolü (OWASP),it/api-guvenlik-standart-kontrolu-owasp.md,todo
+44,it,acik-kaynak-lisans-uyumluluk-tarayicisi,Açık Kaynak Lisans Uyumluluk Tarayıcısı,it/acik-kaynak-lisans-uyumluluk-tarayicisi.md,todo
+45,it,erisebilirlik-wcag-dogrulama,Erişilebilirlik WCAG Doğrulama,it/erisebilirlik-wcag-dogrulama.md,todo
+46,siber-guvenlik,pentest-bulgu-siniflandirma,Penetrasyon Testi Bulgu Sınıflandırma,siber-guvenlik/pentest-bulgu-siniflandirma.md,todo
+47,siber-guvenlik,iso-27001-bosluk-analizi-motoru,ISO 27001 Boşluk Analizi Motoru,siber-guvenlik/iso-27001-bosluk-analizi-motoru.md,todo
+48,siber-guvenlik,olay-mudahale-protokol-uyumu,Olay Müdahale Protokol Uyumu,siber-guvenlik/olay-mudahale-protokol-uyumu.md,todo
+49,it,bulut-guvenlik-yapilandirma-kontrolu,Bulut Güvenlik Yapılandırma Kontrolü,it/bulut-guvenlik-yapilandirma-kontrolu.md,todo
+50,it,yazilim-tedarik-zinciri-guvenlik-motoru,Yazılım Tedarik Zinciri Güvenlik Motoru,it/yazilim-tedarik-zinciri-guvenlik-motoru.md,todo
+51,hr,is-kanunu-calisma-saati-uyumu,İş Kanunu Çalışma Saati Uyumu,hr/is-kanunu-calisma-saati-uyumu.md,todo
+52,hr,sgk-bordro-dogrulama,SGK Bordro Doğrulama,hr/sgk-bordro-dogrulama.md,todo
+53,hr,ise-alim-esitlik-bias-kontrolu,İşe Alım Eşitlik/Bias Kontrolü,hr/ise-alim-esitlik-bias-kontrolu.md,todo
+54,hr,performans-degerlendirme-tutarlilik-motoru,Performans Değerlendirme Tutarlılık Motoru,hr/performans-degerlendirme-tutarlilik-motoru.md,todo
+55,medya,rtuk-yayin-duzenleyici-uyum,RTÜK Yayın Düzenleyici Uyum,medya/rtuk-yayin-duzenleyici-uyum.md,todo
+56,medya,telif-hakki-icerik-eslestirme-motoru,Telif Hakkı İçerik Eşleştirme Motoru,medya/telif-hakki-icerik-eslestirme-motoru.md,todo
+57,medya,reklam-mevzuat-uyum-kontrolu,Reklam Mevzuat Uyum Kontrolü,medya/reklam-mevzuat-uyum-kontrolu.md,todo
+58,eticaret,urun-aciklamasi-tuketici-hukuku-uyumu,Ürün Açıklaması Tüketici Hukuku Uyumu,eticaret/urun-aciklamasi-tuketici-hukuku-uyumu.md,todo
+59,eticaret,dinamik-fiyatlandirma-rekabet-hukuku,Dinamik Fiyatlandırma Rekabet Hukuku,eticaret/dinamik-fiyatlandirma-rekabet-hukuku.md,todo
+60,eticaret,iade-politikasi-yasal-uyum-motoru,İade Politikası Yasal Uyum Motoru,eticaret/iade-politikasi-yasal-uyum-motoru.md,todo
+61,perakende,urun-guvenligi-ce-isareti-dogrulama,Ürün Güvenliği CE İşareti Doğrulama,perakende/urun-guvenligi-ce-isareti-dogrulama.md,todo
+62,perakende,fiyat-etiketi-tuketici-hukuku-uyumu,Fiyat Etiketi Tüketici Hukuku Uyumu,perakende/fiyat-etiketi-tuketici-hukuku-uyumu.md,todo
+63,bankacilik,basel3-sermaye-yeterliligi-motoru,Basel III Sermaye Yeterliliği Motoru,bankacilik/basel3-sermaye-yeterliligi-motoru.md,todo
+64,bankacilik,bddk-raporlama-format-dogrulama,BDDK Raporlama Format Doğrulama,bankacilik/bddk-raporlama-format-dogrulama.md,todo
+65,bankacilik,faiz-ucret-mevzuat-uyum-kontrolu,Faiz/Ücret Mevzuat Uyum Kontrolü,bankacilik/faiz-ucret-mevzuat-uyum-kontrolu.md,todo
+66,finans,vergi-beyannamesi-uyum-motoru,Vergi Beyannamesi Uyum Motoru,finans/vergi-beyannamesi-uyum-motoru.md,todo
+67,finans,muhasebe-standartlari-tfrs-uyumu,Muhasebe Standartları TFRS Uyumu,finans/muhasebe-standartlari-tfrs-uyumu.md,todo
+68,finans,halka-arz-prospektus-uyum-kontrolu,Halka Arz Prospektüs Uyum Kontrolü,finans/halka-arz-prospektus-uyum-kontrolu.md,todo
+69,finans,kripto-varlik-mevzuat-uyum-motoru,Kripto Varlık Mevzuat Uyum Motoru,finans/kripto-varlik-mevzuat-uyum-motoru.md,todo
+70,hukuk,mahkeme-dilekce-usul-uyumu,Mahkeme Dilekçesi Usul Uyumu,hukuk/mahkeme-dilekce-usul-uyumu.md,todo
+71,hukuk,sozlesme-uyum-motoru,Sözleşme Uyum Motoru,hukuk/sozlesme-uyum-motoru.md,todo
+72,hukuk,fikri-mulkiyet-basvuru-format-uyumu,Fikri Mülkiyet Başvuru Format Uyumu,hukuk/fikri-mulkiyet-basvuru-format-uyumu.md,todo
+73,kamu,ihale-sartname-uygunluk-4734,Kamu İhale Şartname Uygunluk (4734),kamu/ihale-sartname-uygunluk-4734.md,todo
+74,kamu,kamu-bilgi-guvenligi-direktif-uyumu,Kamu Bilgi Güvenliği Direktif Uyumu,kamu/kamu-bilgi-guvenligi-direktif-uyumu.md,todo
+75,kamu,e-devlet-hizmet-erisim-uyum-kontrolu,e-Devlet Hizmet Erişim Uyum Kontrolü,kamu/e-devlet-hizmet-erisim-uyum-kontrolu.md,todo
+76,akademi,klinik-arastirma-etik-kurul-kontrol,Klinik Araştırma Etik Kurul Kontrol,akademi/klinik-arastirma-etik-kurul-kontrol.md,todo
+77,akademi,tubitak-hibe-basvuru-format-uyumu,TÜBİTAK Hibe Başvuru Format Uyumu,akademi/tubitak-hibe-basvuru-format-uyumu.md,todo
+78,akademi,makale-intihal-akademik-norm-kontrolu,Makale İntihal Akademik Norm Kontrolü,akademi/makale-intihal-akademik-norm-kontrolu.md,todo
+79,hukuk,arabuluculuk-surec-uyum-motoru,Arabuluculuk Süreç Uyum Motoru,hukuk/arabuluculuk-surec-uyum-motoru.md,todo
+80,gayrimenkul,tapu-tescil-uygunluk-motoru,Tapu Tescil Uygunluk Motoru,gayrimenkul/tapu-tescil-uygunluk-motoru.md,todo
+81,gayrimenkul,kira-artis-hukuki-limit-kontrolu,Kira Artış Hukuki Limit Kontrolü,gayrimenkul/kira-artis-hukuki-limit-kontrolu.md,todo
+82,gayrimenkul,imar-plani-uygunluk-dogrulama,İmar Planı Uygunluk Doğrulama,gayrimenkul/imar-plani-uygunluk-dogrulama.md,todo
+83,turizm,seyahat-vize-uygunluk-kontrolu,Seyahat Vize Uygunluk Kontrolü,turizm/seyahat-vize-uygunluk-kontrolu.md,todo
+84,turizm,otel-guvenlik-sertifika-motoru,Otel Güvenlik Sertifika Motoru,turizm/otel-guvenlik-sertifika-motoru.md,todo
+85,otomotiv,tip-onayi-homologasyon-kontrol-motoru,Tip Onayı Homologasyon Kontrol Motoru,otomotiv/tip-onayi-homologasyon-kontrol-motoru.md,todo
+86,otomotiv,emisyon-test-protokol-uyumu,Emisyon Test Protokol Uyumu,otomotiv/emisyon-test-protokol-uyumu.md,todo
+87,tekstil,kimyasal-icerik-reach-uyum-motoru,Kimyasal İçerik REACH Uyum Motoru,tekstil/kimyasal-icerik-reach-uyum-motoru.md,todo
+88,sosyal-hizmetler,engelli-destekleme-hak-uygunluk,Engelli Destekleme Hak Uygunluk Kontrolü,sosyal-hizmetler/engelli-destekleme-hak-uygunluk.md,todo
+89,spor,doping-analitik-esik-deger-kontrolu,Doping Analitik Eşik Değer Kontrolü,spor/doping-analitik-esik-deger-kontrolu.md,todo
+90,spor,sporcu-transfer-sozlesme-fifa-uyumu,Sporcu Transfer Sözleşme FIFA Uyumu,spor/sporcu-transfer-sozlesme-fifa-uyumu.md,todo
+91,savunma,ihracat-kontrol-dual-use-uyum,İhracat Kontrol Dual-Use Uyum Motoru,savunma/ihracat-kontrol-dual-use-uyum.md,todo
+92,ulasim,surucu-calisma-saati-ab-direktifi,Sürücü Çalışma Saati AB Direktifi Uyumu,ulasim/surucu-calisma-saati-ab-direktifi.md,todo
+93,ulasim,arac-bakim-interval-dogrulama,Araç Bakım Interval Doğrulama,ulasim/arac-bakim-interval-dogrulama.md,todo
+94,denizcilik,port-state-control-kontrol-listesi,Port State Control Kontrol Listesi,denizcilik/port-state-control-kontrol-listesi.md,todo
+95,havayolu,teknik-bakim-kayit-dogrulama,Teknik Bakım Kayıt Doğrulama,havayolu/teknik-bakim-kayit-dogrulama.md,todo
+96,havayolu,kargo-guvenlik-protokol-kontrolu,Kargo Güvenlik Protokol Kontrolü,havayolu/kargo-guvenlik-protokol-kontrolu.md,todo
+97,enerji,nukleer-lisans-uyum-motoru,Nükleer Lisans Uyum Motoru,enerji/nukleer-lisans-uyum-motoru.md,todo
+98,meta,README,Ana README - Manifesto ve Repo Haritası,README.md,todo
+99,meta,CONTRIBUTING,Katkı Rehberi,CONTRIBUTING.md,todo
+100,meta,template,Yeni Sektör Şablonu,template.md,todo
