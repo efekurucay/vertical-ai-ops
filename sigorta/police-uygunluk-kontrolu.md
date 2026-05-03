@@ -1,47 +1,43 @@
-# Poliçe Uygunluk Kontrolü
+# Poliçe Uygunluk Kontrol Motoru
 
-> **Sector:** Sigorta
-> **Difficulty:** Medium
-> **Market Size (TR):** Tüm sigorta satış kanalları
+> **Sector:** Sigorta  
+> **Difficulty:** Medium  
+> **Market Size (TR):** Tüm sigorta acenteleri ve brokerler  
 > **Monetization:** B2B SaaS, white-label
 
 ## Problem
 
-LLM müşteri profiline göre sigorta poliçesi önerisi yapabilir. Ancak önerilen poliçenin **SEDDK düzenlemelerine, zorunlu sigorta gerekliliklerine, sektöre özel lisans şartlarına ve müşteri risk profiline** uygun olup olmadığı doğrulanamaz.
+LLM müşteri profiline göre sigorta ürünü önerisi yapabilir. Ancak önerilen ürünün **SEDDK tescil durumuna, müşterinin risk profiline uygunluğuna, yasal zorunluluk gerekliliklerine ve acentenin yetki belgesine** uygun olup olmadığını doğrulayamaz.
 
 ## The Validation Layer
 
-- Müşteri bu poliçeyi satın almaya yasal olarak uygun mu?
-- Zorunlu sigorta gereklilikleri karşılanıyor mu? (trafik, DASK)
-- Poliçe SEDDK onaylı ürün listesinde mi?
+- Önerilen poliçe ürünü SEDDK'da tescilli mi?
+- Müşteri yaşı/mesleği poliçe kabul kriterlerine uyuyor mu?
+- Zorunlu sigorta türü (trafik, DASK) mevcut mu ve güncel mi?
+- Acente bu ürünü satmaya yetkili mi?
 - Prim hesabı aktüeryal kurallara uygun mu?
-- Sözleşme dili SEDDK standart kloz gerekliliklerini karşılıyor mu?
 
 ## Tech Stack
 
-- **LLM**: GPT-4o (müşteri profili analizi)
-- **Kural Motoru**: Python + SEDDK ürün onay listesi
-- **DB**: Aktüeryal tablo veritabanı
-- **Backend**: FastAPI
+- **Kural Motoru:** Python + SEDDK ürün tescil veritabanı
+- **LLM:** GPT-4o (ürün açıklaması ve öneri)
+- **Backend:** Node.js / FastAPI
 
 ## Business Model
 
-- **Target**: Sigorta acenteleri, online sigorta platformları
-- **Pricing**: Aylık SaaS
-- **Argüman**: Satış hatası riskini ve müşteri şikayetlerini azaltır
+- **Target:** Sigorta acenteleri, bancassurance kanalları
+- **Pricing:** Kullanıcı başına aylık SaaS
+- **Argüman:** Uygunsuz ürün satışı SEDDK cezası + itibar riski
 
 ## Turkey Context
 
-- DASK (Doğal Afet Sigortaları Kurumu) zorunlu deprem sigortası
-- SEDDK poliçe standart klozları yayımlıyor
+- SEDDK ürün tescil listesi düzenli güncelleniyor
+- DASK zorunluluğu penetrasyon sorunu yaratıyor — kontrol motoru fırsatı
+- Acentelerin büyük çoğunluğu hâlâ kağıt tabanlı süreçler kullanıyor
 
 ## Getting Started
 
-1. SEDDK onaylı ürün listesini JSON'a aktar
-2. Zorunlu sigorta türlerini ve şartlarını tanımla
-3. LLM önerisini bu liste ve kurallara karşı kontrol et
-
-## Resources
-
-- [SEDDK](https://www.seddk.gov.tr)
-- [DASK](https://www.dask.org.tr)
+1. SEDDK tescil listesini parse et
+2. Müşteri profili → uygun ürün eşleştirme kuralları yaz
+3. LLM ile önerileri müşteriye açıkla
+4. Uygunsuz ürün önerisi yapılırsa bloke et
