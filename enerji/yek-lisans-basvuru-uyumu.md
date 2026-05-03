@@ -1,48 +1,49 @@
 # YEK Lisans Başvuru Uyum Motoru
 
-> **Sector:** Enerji / Yenilenebilir Enerji
-> **Difficulty:** Medium
-> **Market Size (TR):** Her yıl yüzlerce YEK/YEKDEM başvurusu
-> **Monetization:** B2B SaaS, danışmanlık entegrasyonu
+> **Sector:** Enerji / Yenilenebilir  
+> **Difficulty:** High  
+> **Market Size (TR):** Her yıl yeni RES/GES/HES başvuruları  
+> **Monetization:** Proje başına, danışmanlık SaaS
 
 ## Problem
 
-LLM YEK (Yenilenebilir Enerji Kaynakları) lisans başvurusu için gerekli belgeleri listeleyebilir veya taslak yazabilir. Ancak başvurunun **EPDK lisanslama yönetmeliği, YEKDEM mekanizması koşulları ve bölgeye özel kısıtlamalara** tam uyumlu olup olmadığını doğrulayamaz.
+LLM YEK lisans başvuru dosyası taslağı yazabilir. Ancak dosyanın **EPDK lisanslama yönetmeliği, Enerji ve Tabii Kaynaklar Bakanlığı ön izin şartları ve teknik minimum gereklilikler** açısından tam olup olmadığını doğrulayamaz. Eksik evrak = başvuru iptali.
 
 ## The Validation Layer
 
-- Proje kapasitesi lisans muafiyeti eşiğini aşıyor mu? (1 MW üzeri)
-- Bağlantı noktası şebeke kapasitesi mevcut mu? (TEİAŞ/EDAŞ görüşü)
-- ÇED durumu projenin büyüklüğüyle uyumlu mu?
-- YEKDEM başvuru süresi ve döngüsü uygun mu?
-- Arazi kullanım izni türü (irtifak, kiralama) doğru mu?
+- Başvuru türüne göre zorunlu belgeler tamam mı? (RES, GES, HES farklı liste)
+- Kapasite sınırı lisans gerektiriyor mu? (1 MW altı muafiyet)
+- Arazi belgeleri (tapu, kiralama sözleşmesi) eşleşiyor mu?
+- ÇED zorunluluğu var mı? (kapasite eşiğine göre)
+- Bağlantı kapasitesi talep formu doldurul mu?
 
 ## Tech Stack
 
-- **LLM**: Claude (başvuru taslağı)
-- **Kural Motoru**: Python + EPDK yönetmelik JSON
-- **GIS**: Şebeke kapasite haritası entegrasyonu
-- **Backend**: FastAPI
+- **Kural Motoru:** Python + EPDK lisanslama checklist JSON
+- **LLM:** GPT-4o (başvuru belgesi hazırlama)
+- **Veri:** EPDK mevzuat veritabanı
+- **Backend:** FastAPI
 
 ## Business Model
 
-- **Target**: YEK yatırımcıları, EPC firmaları, enerji danışmanlık şirketleri
-- **Pricing**: Proje başına veya aylık SaaS
-- **Argüman**: Başvuru ret riskini ve revizyon maliyetini azaltır
+- **Target:** YEK yatırımcıları, enerji mühendislik büroları, EPK danışmanları
+- **Pricing:** Başvuru başına veya yıllık abonelik
+- **Argüman:** Başvuru hataları projeyi 1-2 yıl geciktirebilir
 
 ## Turkey Context
 
-- EPDK lisanslama süreci karmaşık ve uzun
-- YEKDEM (Yenilenebilir Enerji Kaynaklarını Destekleme Mekanizması) periyodik başvuru
-- TÜBİTAK 1507 Enerji kategorisi
+- Türkiye 2035 hedefi: kurulu gücün %65'i yenilenebilir enerji
+- EPDK lisanslama süreci karmaşık ve dökümantasyon ağır
+- YEKA ihale süreçleri ek format gerektiriyor
 
 ## Getting Started
 
-1. EPDK lisanslama yönetmeliğindeki belge listesini JSON'a aktar
-2. Proje parametreleri gir → gerekli belge ve koşulları listele
-3. Yüklenen belgelerle kontrol listesini karşılaştır
+1. EPDK yönetmeliğinden başvuru türü bazlı belge listelerini JSON'a aktar
+2. Checklist kontrolü: yüklenen belgeler vs. zorunlu liste
+3. LLM eksik belgeleri ve nasıl tamamlanacağını açıklar
+4. Kapasite hesabı ile lisans zorunluluk tespiti ekle
 
 ## Resources
 
-- [EPDK](https://www.epdk.gov.tr)
-- [TEİAŞ Bağlantı](https://www.teias.gov.tr)
+- [EPDK Mevzuat](https://www.epdk.gov.tr/Detay/Icerik/3-0-24/elektrik-piyasasi-mevzuat)
+- [ETKB Yenilenebilir Enerji](https://www.enerji.gov.tr)
