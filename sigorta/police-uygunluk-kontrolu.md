@@ -1,43 +1,39 @@
-# Poliçe Uygunluk Kontrol Motoru
+# Poliçe Uygunluk Kontrolü
 
 > **Sector:** Sigorta  
 > **Difficulty:** Medium  
-> **Market Size (TR):** Tüm sigorta acenteleri ve brokerler  
-> **Monetization:** B2B SaaS, white-label
+> **Monetization:** Sigorta şirketi SaaS entegrasyonu
 
 ## Problem
 
-LLM müşteri profiline göre sigorta ürünü önerisi yapabilir. Ancak önerilen ürünün **SEDDK tescil durumuna, müşterinin risk profiline uygunluğuna, yasal zorunluluk gerekliliklerine ve acentenin yetki belgesine** uygun olup olmadığını doğrulayamaz.
+LLM müşteri beyanına göre uygun poliçe türleri önerebilir. Ancak poliçe üretiminde teminat, istisna, yaş, meslek, sağlık beyanı ve bölgesel risk gibi birçok alan resmi kurallarla doğrulanmalıdır.
 
-## The Validation Layer
+## Validation Layer
 
-- Önerilen poliçe ürünü SEDDK'da tescilli mi?
-- Müşteri yaşı/mesleği poliçe kabul kriterlerine uyuyor mu?
-- Zorunlu sigorta türü (trafik, DASK) mevcut mu ve güncel mi?
-- Acente bu ürünü satmaya yetkili mi?
-- Prim hesabı aktüeryal kurallara uygun mu?
+- Başvuru sahibi poliçe yaş sınırına uygun mu?
+- Beyan edilen risk profili teminat kapsamına giriyor mu?
+- İstisnalar ve muafiyetler doğru uygulandı mı?
+- Eksik beyan nedeniyle poliçe iptal riski var mı?
+- Fiyatlandırma kural setine uyum var mı?
 
 ## Tech Stack
 
-- **Kural Motoru:** Python + SEDDK ürün tescil veritabanı
-- **LLM:** GPT-4o (ürün açıklaması ve öneri)
-- **Backend:** Node.js / FastAPI
+- Rule engine
+- Sigorta ürün ağacı ve teminat tabloları
+- LLM: müşteri açıklaması ve acente yardımcısı
+- API first backend
 
 ## Business Model
 
-- **Target:** Sigorta acenteleri, bancassurance kanalları
-- **Pricing:** Kullanıcı başına aylık SaaS
-- **Argüman:** Uygunsuz ürün satışı SEDDK cezası + itibar riski
+- Sigorta şirketleri ve broker’lar
+- Poliçe başına ücret veya yıllık lisans
 
 ## Turkey Context
 
-- SEDDK ürün tescil listesi düzenli güncelleniyor
-- DASK zorunluluğu penetrasyon sorunu yaratıyor — kontrol motoru fırsatı
-- Acentelerin büyük çoğunluğu hâlâ kağıt tabanlı süreçler kullanıyor
+Türkiye’de sigorta penetrasyonu artarken ürün çeşitliliği de büyüyor. Bu da acente ve operasyon ekiplerinin hata yapma riskini artırıyor; doğrulama katmanı burada güçlü değer üretir.
 
 ## Getting Started
 
-1. SEDDK tescil listesini parse et
-2. Müşteri profili → uygun ürün eşleştirme kuralları yaz
-3. LLM ile önerileri müşteriye açıkla
-4. Uygunsuz ürün önerisi yapılırsa bloke et
+1. Teminat ve istisna kurallarını yapılandırılmış veri haline getir
+2. Başvuru formunu validator pipeline’a bağla
+3. Hata / istisna açıklamaları için LLM katmanı ekle

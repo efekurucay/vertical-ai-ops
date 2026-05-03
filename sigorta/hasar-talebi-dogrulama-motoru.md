@@ -1,71 +1,40 @@
 # Hasar Talebi Doğrulama Motoru
 
-> **Sector:** Sigorta
-> **Difficulty:** Medium
-> **Market Size (TR):** 60+ sigorta şirketi, milyonlarca yıllık hasar talebi
-> **Monetization:** B2B SaaS, API entegrasyonu
+> **Sector:** Sigorta / Claims  
+> **Difficulty:** High  
+> **Monetization:** Claim başına ücret + SaaS
 
 ## Problem
 
-LLM hasar taleplerini analiz edip ödeme kararı önerebilir. Ancak bu önerinin **poliçe kapsamı, muafiyet tutarları, bekleme süreleri, hariç tutulan durumlar ve TRAMER kurallarıyla** uyumlu olup olmadığını doğrulayamaz. Hatalı ödeme hem şirkete zarar verir hem de sigortalıya haksızlık olur.
+LLM hasar dosyasını okuyup olay özetini çıkarabilir. Ancak tazminat kararı, poliçe kapsamı, eksper raporu, tarih uyumu ve fraud sinyalleri gibi doğrulanabilir unsurlara bağlıdır.
 
-## The Validation Layer
+## Validation Layer
 
-- Hasar, poliçe kapsamında mı?
-- Muafiyet tutarı düşüldü mü?
-- Bekleme süresi dolmuş mu?
-- Hasar tarihi poliçe geçerlilik süresi içinde mi?
-- TRAMER'de daha önce aynı hasar bildirilmiş mi?
-- Hasar miktarı sigortalı değeri aşıyor mu?
-
-```
-Hasar Bildirimi → LLM (analiz ve taslak karar) → Sigorta Kural Motoru → Ödeme / Red / İnceleme
-```
-
-## Technical Architecture
-
-```
-[Hasar Formu + Belgeler]
-      ↓
-[LLM — Hasar özeti ve ön değerlendirme]
-      ↓
-[Sigorta Kural Motoru]
-  ├── Poliçe Kapsam Kontrolü
-  ├── Muafiyet Hesaplama
-  ├── Bekleme Süresi Kontrolü
-  ├── TRAMER Sorgulama
-  └── Sigortalı Değer Kontrolü
-      ↓
-[Karar: ÖDE / REDDET / UZMAN İNCELEMESİ]
-```
+- Hasar tarihi poliçe yürürlük dönemine giriyor mu?
+- Talep edilen zarar poliçe kapsamına dahil mi?
+- Eksper raporu ile müşteri beyanı tutarlı mı?
+- Fraud ihtimali oluşturan anomali var mı?
+- Eksik belge nedeniyle karar askıda mı?
 
 ## Tech Stack
 
-- **LLM**: Claude 3.5 Sonnet (belge analizi)
-- **DB**: PostgreSQL (poliçe veritabanı)
-- **API**: TRAMER entegrasyonu
-- **Backend**: FastAPI
+- OCR + belge parser
+- Kural motoru
+- Anomali tespiti
+- LLM: dosya özeti ve çağrı merkezi yardımcısı
 
 ## Business Model
 
-- **Target**: Sigorta şirketleri, acente yönetim sistemleri
-- **Pricing**: İşlem başına API ücreti
-- **Argüman**: Hasar inceleme maliyetini %40-60 düşürür
+- Sigorta şirketleri, TPAs, broker’lar
+- İşlem hacmine göre fiyatlama
 
 ## Turkey Context
 
-- TRAMER (Trafik Sigortaları Bilgi Merkezi) entegrasyonu zorunlu araç sigortaları için
-- SEDDK (Sigortacılık ve Özel Emeklilik Düzenleme Denetleme Kurumu) denetimi
-- TÜBİTAK 1507 InsurTech kategorisi
+Hasar süreçlerinde manuel inceleme maliyeti yüksek. Özellikle araç, sağlık ve konut branşlarında fraud kontrolü ile birlikte çalışan doğrulama sistemleri önemli tasarruf sağlar.
 
 ## Getting Started
 
-1. Basit poliçe JSON şeması oluştur
-2. Muafiyet ve kapsam kontrol kurallarını yaz
-3. LLM hasar bildirimi özetini bu kurallara göre test et
-4. TRAMER mock API ile test
-
-## Resources
-
-- [SEDDK](https://www.seddk.gov.tr)
-- [TRAMER](https://www.tramer.com.tr)
+1. Poliçe kapsam matrisini modele dök
+2. Hasar belgelerini parse et
+3. Tarih, kapsam ve fraud kuralları yaz
+4. İnsan incelemesine gidecek dosyaları işaretle

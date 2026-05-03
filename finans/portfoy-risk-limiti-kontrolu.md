@@ -1,47 +1,40 @@
 # Portföy Risk Limiti Kontrolü
 
-> **Sector:** Finans / Portföy Yönetimi
-> **Difficulty:** High
-> **Market Size (TR):** 70+ portföy yönetim şirketi, yatırım fonları
-> **Monetization:** B2B SaaS, API
+> **Sector:** Finans / Varlık Yönetimi  
+> **Difficulty:** High  
+> **Monetization:** Kurumsal SaaS
 
 ## Problem
 
-LLM portföy optimizasyon önerileri yapabilir. Ancak önerilen ağırlıkların **SPK'nın yatırım fonu tebliğlerinde belirlenen konsantrasyon limitlerine, tek varlık üst sınırlarına, kaldıraç limitine ve likidite gerekliliklerine** uygun olup olmadığını bilemez.
+LLM yatırımcı profiline göre portföy önerileri verebilir. Ancak regülasyon, fon iç tüzüğü ve risk limitleri, önerinin ötesinde doğrulanabilir kurallar gerektirir. Bir portföyün belirli varlık sınıflarında aşırı yoğunlaşması, kurum açısından ciddi uyum ve risk problemi yaratır.
 
-## The Validation Layer
+## Validation Layer
 
-- Tek varlıktaki ağırlık SPK limitini aşıyor mu? (%10 kuralı)
-- Yabancı varlık oranı fon türüne göre belirlenen limiti aşıyor mu?
-- Kaldıraç oranı yasal sınırda mı?
-- Portföy VaR (Value at Risk) limiti dahilinde mi?
-- Likidite: T+2 çözümlenebilir varlık oranı yeterli mi?
+- Varlık dağılımı fon iç tüzüğüne uygun mu?
+- Tek ihraççı limiti aşılıyor mu?
+- Sektörel yoğunlaşma kuralları ihlal ediliyor mu?
+- Volatilite ve VaR limitleri kurum politikasına uygun mu?
+- Yatırımcı risk profiliyle ürün sınıfı eşleşiyor mu?
 
 ## Tech Stack
 
-- **LLM**: GPT-4o (portföy analizi ve önerisi)
-- **Kural Motoru**: Python + SPK tebliğ JSON kuralları
-- **Risk Hesaplama**: numpy/scipy (VaR, korelasyon)
-- **Veri**: MKK API, Borsa İstanbul API
+- Python risk hesaplama kütüphaneleri
+- Portföy analitik motoru
+- LLM: yatırım komitesi özeti üretimi
+- FastAPI + dashboard
 
 ## Business Model
 
-- **Target**: Portföy yönetim şirketleri, yatırım fonları, varlık yöneticileri
-- **Pricing**: AUM bazlı yıllık lisans
-- **Argüman**: SPK denetim cezaları ve lisans iptali riski
+- Varlık yönetim şirketleri ve family office’ler
+- Kullanıcı başına lisans veya portföy hacmine göre fiyatlama
 
 ## Turkey Context
 
-- SPK III-52.1 Tebliği yatırım fonu portföy sınırlamalarını düzenliyor
-- MKK (Merkezi Kayıt Kuruluşu) API portföy verisi sağlıyor
+Türkiye’de serbest fonlar, portföy yönetim şirketleri ve bireysel yatırım araçları genişledikçe risk ve uygunluk kontrolü daha önemli hale geliyor. SPK denetim perspektifi nedeniyle kural tabanlı açıklanabilir sistemler öne çıkıyor.
 
 ## Getting Started
 
-1. SPK III-52.1 Tebliği'nden limit tablosunu JSON'a aktar
-2. Python ile portföy ağırlık kontrolü yaz
-3. LLM önerisini bu limitlerle test et
-
-## Resources
-
-- [SPK Tebliğler](https://www.spk.gov.tr)
-- [MKK](https://www.mkk.com.tr)
+1. Portföy bileşenlerini normalize et
+2. İç tüzük kurallarını makine okunur hale getir
+3. Limit ihlallerini açıklayan validator katmanı kur
+4. LLM ile komite özeti üret

@@ -1,102 +1,41 @@
-# KYC/AML Kural Motoru
+# KYC / AML Kural Motoru
 
 > **Sector:** Finans / Bankacılık  
 > **Difficulty:** High  
-> **Market Size (TR):** ~50+ banka, 400+ finansal kurum  
-> **Monetization:** B2B SaaS, API lisansı
-
----
+> **Monetization:** SaaS + API + kurum içi kurulum
 
 ## Problem
 
-Bir LLM'e "bu müşteri profili KYC uyumlu mu?" diye sorduğunuzda makul görünen ama **MASAK yönetmeliğine, FATF tavsiyelerine veya müşteri kurumun iç risk kriterlerine** aykırı bir değerlendirme üretebilir. Finansal kurum çalışanı bu çıktıyı referans alırsa hem yasal sorumluluk hem düzenleyici ceza riski doğar.
+LLM müşteri onboarding metinlerini okuyup riskli alanları işaretleyebilir. Ancak KYC ve AML süreçlerinde asıl değer, kararın açıklanabilir ve mevzuata bağlı olmasıdır. Banka, fintech ya da ödeme kuruluşu, müşteriyi neden reddettiğini veya neden incelemeye aldığını kuralla temellendirmek zorundadır.
 
-LLM'in temel sorunu: "risk yüksek görünüyor" diyebilir ama **hangi MASAK maddesine göre, hangi işlem eşiğini aşarak** risk oluştuğunu deterministik olarak ispatlayamaz.
+## Validation Layer
 
----
-
-## The Validation Layer
-
-Doğrulama katmanı şunları kontrol eder:
-
-- İşlem tutarı yasal bildirим eşiklerini aşıyor mu? (Türkiye'de 225.000 TL ve üzeri)
-- Müşteri, MASAK'ın yayımladığı terör finansmanı listelerinde var mı?
-- PEP (Politically Exposed Person) statüsü var mı?
-- İşlem örüntüsü yapısal parçalama (structuring) belirtisi taşıyor mu?
-- Coğrafi risk: işlem FATF'ın yüksek riskli ülke listesindeki bir ülkeyi kapsıyor mu?
-
-Her kontrol için **kural gerekçesi** (hangi madde, hangi liste, hangi tarihli güncellemesiyle) kaydedilir ve audit trail oluşturulur.
-
-```
-Müşteri Verisi → LLM (narratif risk özeti) → MASAK Kural Motoru → Onay / Red + Gerekçe
-```
-
----
-
-## Technical Architecture
-
-```
-[Müşteri Verisi]
-      │
-      ▼
-[LLM — Narratif risk özeti üretir]
-      │
-      ▼
-[Kural Motoru]
-  ├── MASAK Liste API (günlük güncelleme)
-  ├── FATF Ülke Risk Listesi
-  ├── İşlem Eşik Kontrolleri
-  ├── PEP Database
-  └── Structuring Pattern Detector
-      │
-      ▼
-[Sonuç: PASS / FLAG / BLOCK + Madde Referansı]
-      │
-      ▼
-[Audit Log + Uyumluluk Raporu]
-```
-
----
+- Kimlik doğrulama zorunlu alanları eksiksiz mi?
+- Adres, vergi numarası, şirket sicil kaydı gibi alanlar çapraz kontrol edildi mi?
+- Yaptırım listesi, PEP listesi ve adverse media taraması yapıldı mı?
+- Risk skoru kurum eşiklerine göre doğru hesaplandı mı?
+- Şüpheli işlem senaryoları AML kurallarıyla eşleşiyor mu?
 
 ## Tech Stack
 
-- **LLM**: GPT-4o veya Claude 3.5 Sonnet (narratif özet için)
-- **Kural Motoru**: Python + Pydantic validation + custom rule DSL
-- **Listeler**: MASAK resmi API, OFAC SDN list, UN Sanctions
-- **DB**: PostgreSQL (audit log), Redis (gerçek zamanlı liste cache)
-- **Backend**: FastAPI
-- **Frontend**: Next.js (compliance officer dashboard)
-
----
+- Python / FastAPI
+- Rule engine (json rules veya DSL)
+- OFAC, UN, AB yaptırım listeleri
+- LLM: açıklama üretimi ve belge özetleme
 
 ## Business Model
 
-- **Target customer**: Orta ölçekli bankalar, ödeme kuruluşları, kripto borsaları
-- **Pricing model**: İşlem başına API ücreti (0.01–0.05 USD/sorgu) veya aylık SaaS
-- **Neden ödeyecekler**: MASAK cezaları 6 haneli TL'yi aşıyor; mevcut çözümler pahalı ve entegrasyonu zor
-- **Sales motion**: Compliance officer → CTO → procurement
-
----
+- Banka ve fintech’lere yıllık lisans
+- API bazlı kullanım fiyatlaması
+- On-prem kurulum seçeneği
 
 ## Turkey Context
 
-- **MASAK** (Mali Suçları Araştırma Kurulu) düzenli liste güncellemeleri yayımlıyor ancak bunlar makine-okunabilir formatta değil — ilk MVP bu listeyi parse edip API'ye dönüştürmekle başlayabilir
-- **5549 sayılı Kanun** ve **Suç Gelirlerinin Aklanmasının Önlenmesi Hakkında Yönetmelik** ana yasal çerçeve
-- TÜBİTAK 1507 programı bu tür regtech çözümleri için uygun — "yapay zeka destekli uyum otomasyonu" başlığı altında başvurulabilir
+Türkiye’de MASAK yükümlülükleri ve elektronik kimlik doğrulama süreçleri nedeniyle açıklanabilir kontrol katmanı kritik hale geliyor. Fintech sayısındaki artış, bu alanda dikey AI ürünleri için iyi bir giriş noktası oluşturuyor.
 
----
+## Getting Started
 
-## Getting Started (MVP in a Weekend)
-
-1. MASAK'ın güncel terör listesini PDF'ten parse et, JSON'a dönüştür
-2. FastAPI endpoint: müşteri adı + TCKN alır, liste kontrolü yapar, sonuç döner
-3. LLM katmanı ekle: pozitif match'lerde narratif açıklama üretir
-4. Basit Next.js dashboard: arama + sonuç gösterimi
-
----
-
-## Resources
-
-- [MASAK Resmi Sitesi](https://www.masak.gov.tr)
-- [FATF High-Risk Countries List](https://www.fatf-gafi.org/en/topics/high-risk-and-other-monitored-jurisdictions.html)
-- [5549 Sayılı Kanun](https://www.mevzuat.gov.tr/mevzuatmetin/1.5.5549.pdf)
+1. Müşteri onboarding formunu JSON şemaya dök
+2. Temel KYC zorunlu alanlarını kural seti haline getir
+3. Yaptırım listesi eşleştirme modülü ekle
+4. LLM'i sadece açıklama ve özetleme katmanında kullan
